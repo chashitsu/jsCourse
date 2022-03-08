@@ -26,14 +26,21 @@ let myFactory = new Factory(10);
 let energyBoosts = [7, 3, 4, 5, 4];
 
 let numberOfCars = 0;
+
 while (numberOfCars < 14) {
-  if (myFactory.produceCar() !== null) {
-    numberOfCars += 1
-  } else {
+
+  if (myFactory.produceCar() !== null) 
+  {
+    numberOfCars++;
+  } 
+  else 
+  {
     if (energyBoosts.length > 0) {
       myFactory.addEnergyPower(energyBoosts.shift())
-    } else {
-      break
+    } 
+    else 
+    {
+      break;
     }
   }
 }

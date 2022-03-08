@@ -4,23 +4,28 @@
 - methods:
   - sayHello(caller) - if the caller is the owner: return "Hello {ownerName}." otherwise return "No!" */
 
-
-  class UuEE {
+  const Person = require("./person");
+  
+  module.exports = class UuEE extends Person {
     
-    constructor(owner, state, uid){
-        // todo   check that owner is instance of Human otherwise, it throws an exception
-        
+    constructor(owner, state, uid){   
+      
+        if(owner.constructor.name !== 'Human')
+        {           
+          throw 'Owner parameter must type of Human!';
+        }
         super(state, uid);
-        this.owner = owner;
-        
+        this.owner = owner;        
       }
   
-      sayHello(){
-          // todo - jak poznat ownera?
-        if(false){ return `Hello ${this.owner}`; }
-        return `No!`;
+      sayHello(caller){
+          // TODO - sayHello(caller) - if the caller is the owner: return "Hello {ownerName}." otherwise return "No!" */
+        if(caller === this.owner){ 
+          return `Hello ${this.owner.name}.`; } 
+        else{
+          return `No!`;
+        }
+        
       }
     
 }
-
-module.exports = UuEE;

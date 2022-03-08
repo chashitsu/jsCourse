@@ -13,20 +13,28 @@
 
 /* TODO - jak vyrobit abstraktni tridu? klicove slovo abstract jde podle IDE pouzit jen v TypeScriptu*/ 
 
-class Person {
+module.exports = class Person {
+    
+    static stateActive = 'active';
+    static stateInactive = 'inactive';
     
     static counter = 0;
-    constructor(state = 'active', uid='0-0'){
+
+    constructor(state = Person.stateActive, uid='0-0'){
         this.state = state;
         this.uid = uid;
-        counter++;
-    }
+        Person.counter++;
+    }   
 
     getState(){
         return this.state;
     }
 
     setState(stateNewValue){
+        if(stateNewValue !== Person.stateActive && stateNewValue !== Person.stateInactive)
+        {
+            throw `State parameter allowed values are "${Person.stateActive}" and "${Person.stateInactive}"`;
+        }
         this.state = stateNewValue;
     }
 
@@ -34,9 +42,8 @@ class Person {
         return this.uid;
     }
 
-    static getCountOfPerson(){
-        return counter;
+    static getCountOfPersons() {
+        return Person.counter;
     }
     
 }
-

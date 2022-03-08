@@ -6,11 +6,11 @@
    - sayHello() - return: "Hello from {humanName}."
  */
 
-import { Person } from './person.js';
+  const Person = require("./person");
 
-class Human extends Person {    
+module.exports = class Human extends Person {    
 
-    constructor(name, age, state, uid) {
+  constructor(name, age, state, uid) {
       super(state, uid);
       this.name = name;
       this.age = age;
@@ -21,8 +21,6 @@ class Human extends Person {
     }
 
     sayHello(){
-      return `Hello from ${this.name}.`;
+      return `Hello from: ${this.name}.`;
     }
 }
-
-module.exports = Human;
