@@ -23,13 +23,36 @@ output: "..."
 
 function process(functions = {}, values = []) {
   let functionResults = [];
+  var possibleFunctions = Object.keys(functions);
 
   values.forEach((value) => {
 
+    var type = typeof (value);
+
+    if (possibleFunctions.indexOf(type) < 0) {
+      type = "default";
+    }
+
+    try {
+      var callResult = functions[type](value);
+      if (callResult !== null && callResult !== undefined) {
+        functionResults.push({
+          input: value,
+          output: callResult
+        })
+      }
+    } catch (error) {
+      if (error.status > 500) {
+        throw error;
+      } else {
+        console.log(error.code);
+      }
+    }
+    
   });
 
 
-  return results
+  return functionResults;
 }
 
 
