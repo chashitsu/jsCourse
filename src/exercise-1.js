@@ -19,13 +19,18 @@ each object should contains:
   ]
  */
 
-function getInfo() {
+function getInfo(...values) {
   var results = [];
-
+  let i =0;
   values.forEach((value) => {
-
-
-
+      results.push(
+        {
+          isFalsy: value ? false : true, 
+          type: typeof(value), 
+          StringLength: String(value).length, 
+          index: i 
+        });
+      i++;
   });
   return results
 }
