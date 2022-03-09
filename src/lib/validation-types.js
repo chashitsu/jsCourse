@@ -8,7 +8,7 @@ function number(arg) {
 }
 
 function any(arg) {
-    return true;//(typeof arg === 'any');
+    return true;
 }
   
   module.exports = {
