@@ -32,13 +32,25 @@ function validateAge(age) {
 
 function usingImplicitBinding(users, validateAgeFunc, ageLimit) {
   let invalidUsers = [];
-
+  users.forEach(user => {
+    const validateAgeObject = {
+      age: user.age,
+      validateAge: validateAgeFunc
+    }
+    if(validateAgeObject.validateAge(ageLimit)){
+      invalidUsers.push(user);
+    }
+  })
   return invalidUsers;
 }
 
 function usingExplicitBinding(users, validateAgeFunc, ageLimit) {
   let invalidUsers = [];
-
+  users.forEach(user => {
+    if(validateAgeFunc.call(user, ageLimit)){
+      invalidUsers.push(user);
+    }
+  })
   return invalidUsers;
 }
 

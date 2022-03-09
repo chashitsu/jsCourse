@@ -1,26 +1,19 @@
-/* 
- Human - inherits from Person
- - constructor accepts four parameters: name, age, state, uid
- - methods:
-   - getName() - return name
-   - sayHello() - return: "Hello from {humanName}."
- */
+const Person = require("./person");
 
-  const Person = require("./person");
-
-module.exports = class Human extends Person {    
-
-  constructor(name, age, state, uid) {
-      super(state, uid);
-      this.name = name;
-      this.age = age;
+class Human extends Person {
+    constructor(name, age, state, uid) {
+        super(state, uid);
+        this.age = age;
+        this.name = name;
     }
 
     getName() {
-      return this.name; // todo - 'name' je nejspis nejake klicove slovo, je treba pouzit jiny nazev promene, nebo pridat podtrzitka k promennym tridy
+        return this.name;
     }
 
-    sayHello(){
-      return `Hello from: ${this.name}.`;
+    sayHello() {
+        return `Hello from: ${this.name}.`;
     }
 }
+
+module.exports = Human;
